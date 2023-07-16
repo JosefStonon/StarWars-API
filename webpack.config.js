@@ -8,7 +8,7 @@ module.exports = {
   mode: 'production',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'index[hash].js'
+    filename: 'bundle[hash].js'
   },
 
   performance: {
@@ -27,22 +27,26 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: 'babel-loader',
       },
       {
-        test: /\.scss$/,
+        test: /\.scss$/i,
         use: ['style-loader',
-                {
-                  loader: 'css-loader',
-                  options: {
-                    modules: true,
-                  },
-                },
+              'css-loader',
+              'sass-loader',
              ],
+      },
+      {
+        test: /\.png$/,
+        use: {
+            loader: "file-loader",
+
+        }
       }
-    ]
+
+    ],
   },
 
   devServer: {

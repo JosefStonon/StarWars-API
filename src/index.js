@@ -1,3 +1,5 @@
+import './scss/styles.scss'
+
 const url = 'https://swapi.dev/api/people/';
 
 const loadingElement = document.querySelector('#loading');
