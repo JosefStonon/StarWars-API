@@ -1,4 +1,9 @@
-import './scss/styles.scss'
+import './scss/styles.scss';
+import '../assets/images/lukeSskywalker.png';
+import '../assets/images/darthVader.png';
+import '../assets/images/Leia Organa.png';
+import '../assets/images/R2-D2.png';
+import '../assets/images/C-3PO.png';
 
 const url = 'https://swapi.dev/api/people/';
 
@@ -55,7 +60,16 @@ arrayCollection.forEach((element, index) => {
   )
   
 })
-console.log(personagens);
-console.log(arrayCollection);
+
+
+let srcPerson = [];
+
+personagens.forEach((element) => {
+  const valor = element.getAttribute('src');
+
+  srcPerson.push(valor);
+
+})
+console.log(srcPerson)
 
 })

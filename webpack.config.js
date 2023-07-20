@@ -31,6 +31,10 @@ module.exports = {
         exclude: /node_modules/,
         use: 'babel-loader',
       },
+
+      
+
+ 
       {
         test: /\.scss$/i,
         use: ['style-loader',
@@ -38,12 +42,19 @@ module.exports = {
               'sass-loader',
              ],
       },
+
+      
+      
       {
-        test: /\.png$/,
+        test: /\.(png)$/,
         use: {
             loader: "file-loader",
+                  options: {
+                    name: "[name].[hash].[ext]",
+                    outputPath: "asstes/imgs/",
+                  }
 
-        }
+              }
       }
 
     ],

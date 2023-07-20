@@ -12,22 +12,21 @@ html {
   margin: 0 auto;
   margin-top: 4rem;
   display: flex;
-}
-
-#navi {
+  
+  #navi {
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: start;
-
-  #navi li {
+  
+  li {
     margin: 0;
     width: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
-    #navi li a {
+    
+    a {
       font-size: 2rem;
       text-decoration: none;
       font-family: 'Starjedi';
@@ -36,13 +35,23 @@ html {
   }
 }
 
+@keyframes btn-mg {
+  from {
+    margin-left: 8rem;
+  }
+
+  to {
+    margin-left: 9rem;
+  }
+}
+
 .stars {
-  width: 50%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   float: left;
-
-  .stars button {
+  
+  button {
     width: 24rem;
     height: 5rem;
     border-radius: 10px;
@@ -52,40 +61,47 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    .stars button:not(:first-child) { 
-      margin-top: 3rem;
-    }
     
-    .btn h1 {
+    
+    h1 {
       display: flex;
       width: fit-content;
       margin: 0;
       font-size: 1.8rem;
     }
     
+    
+  }
+  
+  button:hover {
+    animation: btn-mg 0.3s forwards;
+  }
+  
+  button:not(:first-child) { 
+    margin-top: 3rem;
   }
   
 }
 
-.text {
-  background-color: antiquewhite;
-  width: 50%;
+aside {
+  width: 100%;
   float: right;
-  padding: 100px;
-  font-size: 1.8rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.text h1 {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
+
+}
+
 
 .imagens {
   display: none;
+  width: 100%;
+  
 }
+
+
+
 
 .active {
   display: flex;
