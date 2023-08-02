@@ -1,0 +1,5 @@
+export default [
+  {
+    endpoint: '/peoples/',
+  },
+]
