@@ -1,5 +1,11 @@
-export default [
+import ControllersUse from "./Controllers/ControllersUse.js"
+
+  const route = [
   {
-    endpoint: '/peoples/',
+    endpoint: '/people',
+    method: 'GET',
+    handler: ControllersUse.listApi,
   },
 ]
+
+export default route;

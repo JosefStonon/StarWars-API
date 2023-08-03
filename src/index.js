@@ -1,28 +1,26 @@
 import http from 'http';
-
-import fetch from 'node-fetch';
-
-
+import route from './routes.js';
 
 
 
 const server = http.createServer(async (req, res) => {
   console.log(`Request Method: ${req.method} | Endpoint: ${req.url}`)
 
+  const matchedRoute = route.find((routeOBJ) => (
+    routeOBJ.endpoint === req.url && routeOBJ.method === req.method
+  ));
 
-  try {
-    const resFetch = await fetch('https://swapi.dev/api/');
-    const data = await resFetch.json();
-
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify(data))
-
-
-  } catch {
+  if (matchedRoute) {
+    try{
+      await route.handler(req, res, {endpoint: req.url});
+    } catch {
+       res.writeHead(500, { 'Content-Type': 'text/html' });
+      res.end('<h1>Erro no manipulador da rota!</h1>');
+    }
+  } else {
     res.writeHead(400, { 'Content-Type': 'text/html' });
     res.end('<h1>Deu erro</h1>')
   }
-
 });
 
 server.listen(3001, () => console.log('Logado in http://localhost:3001'))
