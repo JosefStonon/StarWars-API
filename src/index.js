@@ -1,25 +1,26 @@
 import http from 'http';
 import route from './routes.js';
+import { URL } from 'url';
 
 
 
-const server = http.createServer(async (req, res) => {
-  console.log(`Request Method: ${req.method} | Endpoint: ${req.url}`)
+const server = http.createServer((req, res) => {
+  const parseURL = new URL(`http://localhost:3001${req.url}`);
+  console.log(parseURL)
+  console.log(`Request Method: ${req.method} | Endpoint: ${parseURL.pathname}`)
 
   const matchedRoute = route.find((routeOBJ) => (
-    routeOBJ.endpoint === req.url && routeOBJ.method === req.method
+    routeOBJ.endpoint === parseURL.pathname && routeOBJ.method === req.method
   ));
 
   if (matchedRoute) {
-    try{
-      await route.handler(req, res, {endpoint: req.url});
-    } catch {
-       res.writeHead(500, { 'Content-Type': 'text/html' });
-      res.end('<h1>Erro no manipulador da rota!</h1>');
-    }
-  } else {
+    req.query = Object.fromEntries(parseURL.searchParams)
+    matchedRoute.handler(req, res);
+
+
+  } else { 
     res.writeHead(400, { 'Content-Type': 'text/html' });
-    res.end('<h1>Deu erro</h1>')
+    res.end(`Cannot ${parseURL.pathname} ${parseURL.pathname}`)
   }
 });
 

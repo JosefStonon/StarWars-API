@@ -1,18 +1,18 @@
-import controllerAccess from '../controllersApi/ControllerAccess.js';
-
+import users from '../mocs/index.js'
+import fetchApi from '../controllersApi/ControllerAccess.js';
 
 export default {
-  async listApi(req, res, {endpoint}) {
+  userList(req, res) {
+    const { order } = req.query;
+    const sortedOrder = users.sort((a, b) => {
+      if(order === 'desc') {
+        return a.id < b.id ? 1 : -1;
+      }
+      return a.id > b.id ? 1 : -1;
+    });
 
-    try{
-      const data = await controllerAccess(endpoint);
-        res.writeHead(200, { 'Content-Type': 'application/json'});
-        res.end(data)
-
-    } catch (error) {
-      console.error('Erro no Controller:', error);
-      res.writeHead(500, { 'Content-Type': 'text/html' });
-      res.end('<h1>Erro no Controller</h1>');
-    }
+    res.writeHead(200, { 'Content-Type': 'application/json'});
+    res.end(JSON.stringify(sortedOrder))
+    
   }
 }

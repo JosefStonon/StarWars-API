@@ -1,14 +1,11 @@
-import fetch from 'node-fetch';
+import fetch from "node-fetch";
 
+async function fetchApi(req, res) {
 
-async function controllerAccess(endpoint) {
-  try {
-    const resFetch = await fetch(`https://swapi.dev/api/${endpoint}`);
-    return await resFetch.json();
-  } catch (error) {
-    throw error
-  }
+  const feth = await fetch(`https://swapi.dev/api/people`);
 
-};
+  const data = await feth.json();
+return data
+}
 
-export default controllerAccess
+export default fetchApi;
