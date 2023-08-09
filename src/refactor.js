@@ -2,8 +2,7 @@ import './scss/styles.scss'
 
 const url = 'https://swapi.dev/api/people/';
 
-const navMenu = document.getElementsByClassName('lk');
-console.log(navMenu)
+
 
 const pro = new Promise((resolve, reject) => {
   resolve(fetch(url));

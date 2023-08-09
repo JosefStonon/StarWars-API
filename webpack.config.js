@@ -32,22 +32,25 @@ module.exports = {
         use: 'babel-loader',
       },
       {
-        test: /\.scss$/i,
+        test: /\.scss$/,
         use: ['style-loader',
               'css-loader',
               'sass-loader',
              ],
       },
+
       {
-        test: /\.png$/,
+        test: /\.(png)$/,
         use: {
-            loader: "file-loader",
+          loader: "file-loader",
+                options: {
+                  name: "[name].[hash].[ext]",
+                  outputPath: "asstes/imgs/",
+                }
 
-        }
-      }
-
-    ],
-  },
+            }
+      },
+]},
 
   devServer: {
     port: 3000

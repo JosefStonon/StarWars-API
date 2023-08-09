@@ -20,14 +20,14 @@ html {
   justify-content: flex-start;
   align-items: start;
 
-  #navi li {
+  li {
     margin: 0;
     width: 100%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 
-    #navi li a {
+    a {
       font-size: 2rem;
       text-decoration: none;
       font-family: 'Starjedi';
@@ -42,7 +42,7 @@ html {
   flex-direction: column;
   float: left;
 
-  .stars button {
+  button {
     width: 24rem;
     height: 5rem;
     border-radius: 10px;
@@ -53,11 +53,11 @@ html {
     justify-content: center;
     align-items: center;
 
-    .stars button:not(:first-child) { 
+    button:not(:first-child) { 
       margin-top: 3rem;
     }
     
-    .btn h1 {
+    h1 {
       display: flex;
       width: fit-content;
       margin: 0;
