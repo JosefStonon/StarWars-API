@@ -2,9 +2,11 @@
   "name": "StarWars-API",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "repository": "https://github.com/JosefStonon/StarWars-API.git",
   "author": "JosefStonon <josef.sartori@outlook.com>",
   "license": "MIT",
+<<<<<<< HEAD
   "type": "module",
   "scripts": {
     "build": "webpack",
@@ -26,5 +28,9 @@
     "webpack": "^5.88.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
+=======
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+>>>>>>> d1bc696b95ab6eaf9d7cb97f3b69296a4204164e
   }
 }
